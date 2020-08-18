@@ -7,6 +7,16 @@
           <p>あなたの音楽を見つけよう</p>
         </v-col>
       </v-row>
+      <v-row class="text-center">
+        <v-col class="col-md-10">
+          <v-text-field :counter="100" label="アーティスト名を入力して下さい" aria-required class="text-center"></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row class="text-center">
+        <v-col>
+          <v-btn>Search</v-btn>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
