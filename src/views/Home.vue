@@ -3,7 +3,7 @@
     <v-container>
       <v-row class="text-center">
         <v-col class="mb-4">
-          <h1 class="display-2 font-weight-bold mb-3">MUSIC SEARTCH</h1>
+          <h1 class="display-2 font-weight-bold mb-3">MUSIC SEARCH</h1>
           <p>あなたの音楽を見つけよう</p>
         </v-col>
       </v-row>
