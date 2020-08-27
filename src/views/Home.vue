@@ -9,12 +9,18 @@
       </v-row>
       <v-row class="text-center">
         <v-col class="col-md-10">
-          <v-text-field :counter="100" label="アーティスト名を入力して下さい" aria-required class="text-center"></v-text-field>
+          <v-text-field
+            v-model="keyword"
+            :counter="100"
+            label="アーティスト名を入力して下さい"
+            aria-required
+            class="text-center"
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row class="text-center">
         <v-col>
-          <v-btn>Search</v-btn>
+          <v-btn @click="search">Search</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -26,5 +32,13 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
+  data: () => ({
+    keyword: ''
+  }),
+  methods: {
+    search () {
+      this.$router.push(`/result/${this.keyword}`)
+    }
+  }
 }
 </script>
