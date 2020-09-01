@@ -7,32 +7,20 @@
       </v-col>
     </v-row>
     <v-row class="mb-4"></v-row>
-    <v-card max-width="400" class="mx-auto">
+    <v-card max-width="800" class="mx-auto">
       <v-container>
         <v-row dense>
-          <v-col cols="12">
-            <v-card color="#385F73" dark>
-              <v-card-title class="headline">Unlimited music now</v-card-title>
-
-              <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.</v-card-subtitle>
-
-              <v-card-actions>
-                <v-btn text>Listen Now</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-
-          <v-col v-for="(item, i) in items" :key="i" cols="12">
-            <v-card color="#191970" dark>
+          <v-col v-for="(item, i) in albums" :key="i" cols="12">
+            <v-card color="#F5F5F5" :href="item.collectionViewUrl" target="_blank">
               <div class="d-flex flex-no-wrap justify-space-between">
                 <div>
-                  <v-card-title class="headline" v-text="item.title"></v-card-title>
+                  <v-card-title class="headline" v-text="item.collectionName"></v-card-title>
 
-                  <v-card-subtitle v-text="item.artist"></v-card-subtitle>
+                  <v-card-subtitle v-text="item.artistName"></v-card-subtitle>
                 </div>
 
                 <v-avatar class="ma-3" size="125" tile>
-                  <v-img :src="item.src"></v-img>
+                  <v-img :src="item.artworkUrl100"></v-img>
                 </v-avatar>
               </div>
             </v-card>
@@ -44,13 +32,19 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data: () => ({
-    items: []
+    albums: []
   }),
-  // componentが生成された時
-  created: {
-
+  // componentが生成された時に発火する
+  created () {
+    axios.get(`https://itunes.apple.com/search?term=${this.$route.params.keyword}&entity=album`)
+      .then(response => {
+        console.log(response)
+        this.albums = response.data.results
+      })
   }
 }
 </script>
